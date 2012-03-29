@@ -1,0 +1,19 @@
+{
+  "author": "nanhapark <http://about.me/nanha>",
+  "name": "nodeman",
+  "description": "Executable Node.js User's Colorful Manual for Command-line.",
+  "homepage": "http://nodeqa.com",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nanha/nodeman.git"
+  },
+  "dependencies": {
+    "colors": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
