@@ -2,14 +2,7 @@
 
 var usage = ''
   + '\n'
-  + '  Usage: express [options] [path]\n'
-  + '\n'
-  + '  Options:\n'
-  + '    -s, --sessions           add session support\n'
-  + '    -t, --template <engine>  add template <engine> support (jade|ejs). default=jade\n'
-  + '    -c, --css <engine>       add stylesheet <engine> support (stylus). default=plain css\n'
-  + '    -v, --version            output framework version\n'
-  + '    -h, --help               output help information\n'
+  + '  Usage: nodeman [module_name]\n'
   ;
 
 var moduleName = process.argv.slice(2).shift();
