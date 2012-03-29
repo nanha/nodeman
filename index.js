@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var colors = require('colors');
 var usage = ''
   + '\n'
   + '  Usage: nodeman [module_name]\n'
@@ -18,7 +19,7 @@ if (!moduleName) {
  */
 (function help(id) {
     try {
-        var foo = require(id + '_doc');
+        var foo = require('./docs/' + id + '_doc');
     } catch (e) {
         abort(e + "\nmake file!");
     }
