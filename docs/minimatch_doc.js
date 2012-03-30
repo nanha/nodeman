@@ -1,30 +1,24 @@
-exports.__doc__ = "NAME\n".yellow
-    + "\tminimatch\n"
-    + "\n"
-    + "CONTEXT\n".yellow
-    + "\tuse require\n".magenta
-    + "\n"
-    + "MODULE DOCS\n".yellow
-    + "\thttp://startic.kr/njs/package/minimatch\n"
-    + "\n"
-    + "DESCRIPTION\n".yellow
-    + "\tminimatch\n".red
-    + "\t==========\n"
-    + "\n"
-    + "\tA minimal matching utility.\n"
-    + "\n"
+exports.name = 'minimatch';
+exports.context = 'use require';
+exports.homepage = '';
+exports.description = [
+    "\tminimatch".red
+    , "\t=========="
+    , ""
+    , "\tA minimal matching utility."
+    , ""
 
-    + "\tThis is the matching library used internally by npm.\n"
-    + "\tEventually, it will replace the C binding in node-glob.\n"
-    + "\tIt works by converting glob expressions into JavaScript RegExp objects.\n"
-    + "\n"
+    , "\tThis is the matching library used internally by npm."
+    , "\tEventually, it will replace the C binding in node-glob."
+    , "\tIt works by converting glob expressions into JavaScript RegExp objects."
+    , ""
 
-    + "\tUsage\n".red
-    + "\t======\n"
-    + "\n"
-    + "\tvar minimatch = require(\"minimatch\")\n".green
-    + "\n"
+    , "\tUsage".red
+    , "\t======"
+    , ""
+    , "\tvar minimatch = require(\"minimatch\")".green
+    , ""
 
-    + "\tminimatch(\"bar.foo\", \"*.foo\") // true!\n".green
-    + "\tminimatch(\"bar.foo\", \"*.bar\") // false!\n".green
-    ;
+    , "\tminimatch(\"bar.foo\", \"*.foo\") // true!".green
+    , "\tminimatch(\"bar.foo\", \"*.bar\") // false!".green
+].join('\n');

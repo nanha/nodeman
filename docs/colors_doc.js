@@ -1,37 +1,31 @@
-exports.__doc__ = "NAME\n".yellow
-    + "\tcolors\n"
-    + "\n"
-    + "CONTEXT\n".yellow
-    + "\tglobal, not require\n".magenta
-    + "\n"
-    + "MODULE DOCS\n".yellow
-    + "\thttp://startic.kr/njs/package/colors\n"
-    + "\n"
-    + "DESCRIPTION\n".yellow
-    + "\tget color and style in your node.js console http://bit.ly/yIWvPi\n"
-    + "\n"
-    + "\tcolors and styles:\n"
-    + "\t - bold\n"
-    + "\t - italic\n"
-    + "\t - underline\n"
-    + "\t - inverse\n"
-    + "\t - yellow\n"
-    + "\t - cyan\n"
-    + "\t - white\n"
-    + "\t - magenta\n"
-    + "\t - green\n"
-    + "\t - red\n"
-    + "\t - grey\n"
-    + "\t - blue\n"
-    + "\t - rainbow\n"
-    + "\t - zebra\n"
-    + "\t - random\n\n"
-    + "\n"
-    + "\tUsage\n".red
-    + "\t=======\n"
-    + "\n"
-    + "\t console.log('hello'.green); // outputs green text\n".green
-    + "\t console.log('i like cake and pies'.underline.red) // outputs red underlined text\n".green
-    + "\t console.log('inverse the color'.inverse); // inverses the color\n".green
-    + "\t console.log('OMG Rainbows!'.rainbow); // rainbow (ignores spaces)\n".green
-    ;
+exports.name = 'colors';
+exports.context = 'global, not require';
+exports.homepage = 'http://startic.kr/njs/package/colors';
+exports.description = [
+"\tget color and style in your node.js console http://bit.ly/yIWvPi"
+, ""
+, "\tcolors and styles:"
+, "\t - bold"
+, "\t - italic"
+, "\t - underline"
+, "\t - inverse"
+, "\t - yellow"
+, "\t - cyan"
+, "\t - white"
+, "\t - magenta"
+, "\t - green"
+, "\t - red"
+, "\t - grey"
+, "\t - blue"
+, "\t - rainbow"
+, "\t - zebra"
+, "\t - random\n"
+, ""
+, "\tUsage".red
+, "\t======="
+, ""
+, "\t console.log('hello'.green); // outputs green text".green
+, "\t console.log('i like cake and pies'.underline.red) // outputs red underlined text".green
+, "\t console.log('inverse the color'.inverse); // inverses the color".green
+, "\t console.log('OMG Rainbows!'.rainbow); // rainbow (ignores spaces)".green
+].join('\n');

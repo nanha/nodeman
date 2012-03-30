@@ -1,4 +1,4 @@
-exports.name = 'node_static';
+exports.name = 'node-static';
 exports.context = 'use require';
 exports.homepage = 'http://startic.kr/njs/package/node-static';
 exports.description = [

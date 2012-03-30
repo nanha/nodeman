@@ -1,53 +1,38 @@
-exports.__doc__ = "NAME\n".yellow
-    + "\tclog\n"
-    + "\n"
-    + "CONTEXT\n".yellow
-    + "\tuse require\n".magenta
-    + "\n"
-    + "MODULE DOCS\n".yellow
-    + "\thttp://startic.kr/njs/package/clog\n"
-    + "\n"
-    + "DESCRIPTION\n".yellow
-    + "\tColorful console output for your applications in NodeJS.\n"
+exports.name = 'clog';
+exports.context = 'use require';
+exports.homepage = 'http://startic.kr/njs/package/clog';
+exports.description = [
+"\tUsage".red
+, "\t======="
+, ""
+, "\tvar clog = require('clog');".green
 
-    + "\t- Colors for log, info, warn and error\n"
-    + "\t- Support custom labels\n"
-    + "\t- Support display level and custom display level\n"
-    + "\t- Tiny library\n"
-    + "\t- Easy to use\n"
-    + "\n"
+, "\tclog('server', 'start listening on port 3000');  // custom head".green
 
-    + "\tUsage\n".red
-    + "\t=======\n"
-    + "\n"
-    + "\tvar clog = require('clog');\n".green
+, "\tclog.log('hello', 'world');                      // console.log".green
+, "\tclog.info(['foo', 'bar']);                       // console.info".green
+, "\tclog.warn('baz is deprecated.');                 // console.warn".green
+, "\tclog.error('HTTP/1.1 400 Bad Request');          // console.error".green
+, "\tclog.debug('headers', {                          // console.debug".green
+, "\t    'Content-Type': 'text/javascript'".green
+, "\t});".green
+, ""
+, "\tConfigure".red
+, "\t=========="
+, ""
+, "\t// display level configration:".green
+, "\tclog.configure({'log level': 2});".green
+, "\t//=> {'log': true, 'info': true, 'warn': false, 'error': false, 'debug': false}".green
 
-    + "\tclog('server', 'start listening on port 3000');  // custom head\n".green
-
-    + "\tclog.log('hello', 'world');                      // console.log\n".green
-    + "\tclog.info(['foo', 'bar']);                       // console.info\n".green
-    + "\tclog.warn('baz is deprecated.');                 // console.warn\n".green
-    + "\tclog.error('HTTP/1.1 400 Bad Request');          // console.error\n".green
-    + "\tclog.debug('headers', {                          // console.debug\n".green
-    + "\t    'Content-Type': 'text/javascript'\n".green
-    + "\t});\n".green
-    + "\n"
-    + "\tConfigure\n".red
-    + "\t==========\n"
-    + "\n"
-    + "\t// display level configration:\n".green
-    + "\tclog.configure({'log level': 2});\n".green
-    + "\t//=> {'log': true, 'info': true, 'warn': false, 'error': false, 'debug': false}\n".green
-
-    + "\t// custom display configration:\n".green
-    + "\tclog.configure({\n".green
-    + "\t    'log level': {\n".green
-    + "\t        'log': true,\n".green
-    + "\t        'info': true,\n".green
-    + "\t        'warn': false,\n".green
-    + "\t        'error': true,\n".green
-    + "\t        'debug': false\n".green
-    + "\t    }\n".green
-    + "\t});\n".green
-    + "\t//=> {'log': true, 'info': true, 'warn': false, 'error': true, 'debug': false}\n".green
-    ;
+, "\t// custom display configration:".green
+, "\tclog.configure({".green
+, "\t    'log level': {".green
+, "\t        'log': true,".green
+, "\t        'info': true,".green
+, "\t        'warn': false,".green
+, "\t        'error': true,".green
+, "\t        'debug': false".green
+, "\t    }".green
+, "\t});".green
+, "\t//=> {'log': true, 'info': true, 'warn': false, 'error': true, 'debug': false}".green
+].join('\n');

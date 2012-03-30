@@ -1,24 +1,18 @@
-exports.__doc__ = "NAME\n".yellow
-    + "\tglob\n"
-    + "\n"
-    + "CONTEXT\n".yellow
-    + "\tuse require\n".magenta
-    + "\n"
-    + "MODULE DOCS\n".yellow
-    + "\thttps://github.com/isaacs/node-glob\n"
-    + "\n"
-    + "DESCRIPTION\n".yellow
-    + "\tUsage\n".red
-    + "\t=======\n"
-    + "\n"
-    + "\tvar glob = require(\"glob\")\n".green
-    + "\n"
+exports.name = 'glob';
+exports.context = 'use require';
+exports.homepage = 'https://github.com/isaacs/node-glob';
+exports.description = [
+    , "\tUsage".red
+    , "\t======="
+    , ""
+    , "\tvar glob = require(\"glob\")".green
+    , ""
 
-    + "\t// options is optional\n".green
-    + "\tglob(\"**/*.js\", options, function (er, files) {\n".green
-    + "\t  // files is an array of filenames.\n".green
-    + "\t  // If the `nonull` option is set, and nothing\n".green
-    + "\t  // was found, then files is [\"**/*.js\"]\n".green
-    + "\t  // er is an error object or null.\n".green
-    + "\t})\n".green
-    ;
+    , "\t// options is optional".green
+    , "\tglob(\"**/*.js\", options, function (er, files) {".green
+    , "\t  // files is an array of filenames.".green
+    , "\t  // If the `nonull` option is set, and nothing".green
+    , "\t  // was found, then files is [\"**/*.js\"]".green
+    , "\t  // er is an error object or null.".green
+    , "\t})".green
+].join('\n');

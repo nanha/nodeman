@@ -1,54 +1,48 @@
-exports.__doc__ = "NAME\n".yellow
-    + "\tmkdirp\n"
-    + "\n"
-    + "CONTEXT\n".yellow
-    + "\tuse require\n".magenta
-    + "\n"
-    + "MODULE DOCS\n".yellow
-    + "\thttp://startic.kr/njs/package/mkdirp\n"
-    + "\n"
-    + "DESCRIPTION\n".yellow
-    + "\texample\n".red
-    + "\t========\n"
-    + "\n"
-    + "\tvar mkdirp = require('mkdirp');\n".green
-    + "\n"
+exports.name = 'mkdirp';
+exports.context = 'use require';
+exports.homepage = 'http://startic.kr/njs/package/mkdirp';
+exports.description = [
+    "\texample".red
+    , "\t========"
+    , ""
+    , "\tvar mkdirp = require('mkdirp');".green
+    , ""
 
-    + "\tmkdirp('/tmp/foo/bar/baz', function (err) {\n".green
-    + "\t    if (err) console.error(err)\n".green
-    + "\t    else console.log('pow!')\n".green
-    + "\t});\n".green
-    + "\n"
-    + "\tOutput\n".cyan
-    + "\t----------\n"
-    + "\tpow!\n"
-    + "\n"
+    , "\tmkdirp('/tmp/foo/bar/baz', function (err) {".green
+    , "\t    if (err) console.error(err)".green
+    , "\t    else console.log('pow!')".green
+    , "\t});".green
+    , ""
+    , "\tOutput".cyan
+    , "\t----------"
+    , "\tpow!"
+    , ""
 
-    + "\tAnd now /tmp/foo/bar/baz exists, huzzah!\n"
-    + "\n"
+    , "\tAnd now /tmp/foo/bar/baz exists, huzzah!"
+    , ""
 
-    + "\tmethods\n".red
-    + "\t========\n"
-    + "\n"
-    + "\tvar mkdirp = require('mkdirp');\n".green
-    + "\n"
+    , "\tmethods".red
+    , "\t========"
+    , ""
+    , "\tvar mkdirp = require('mkdirp');".green
+    , ""
 
-    + "\tmkdirp(dir, mode, cb)\n".cyan
-    + "\t----------------------\n"
-    + "\n"
-    + "\tCreate a new directory and any necessary subdirectories at dir with octal\n"
-    + "\tpermission string mode.\n"
-    + "\n"
+    , "\tmkdirp(dir, mode, cb)".cyan
+    , "\t----------------------"
+    , ""
+    , "\tCreate a new directory and any necessary subdirectories at dir with octal"
+    , "\tpermission string mode."
+    , ""
 
-    + "\tIf mode isn't specified, it defaults to 0777 & (~process.umask()).\n"
-    + "\n"
+    , "\tIf mode isn't specified, it defaults to 0777 & (~process.umask())."
+    , ""
 
-    + "\tmkdirp.sync(dir, mode)\n".cyan
-    + "\t----------------------\n"
-    + "\n"
-    + "\tSynchronously create a new directory and any necessary subdirectories at dir\n"
-    + "\twith octal permission string mode.\n"
-    + "\n"
+    , "\tmkdirp.sync(dir, mode)".cyan
+    , "\t----------------------"
+    , ""
+    , "\tSynchronously create a new directory and any necessary subdirectories at dir"
+    , "\twith octal permission string mode."
+    , ""
 
-    + "\tIf mode isn't specified, it defaults to 0777 & (~process.umask()).\n"
-    ;
+    , "\tIf mode isn't specified, it defaults to 0777 & (~process.umask())."
+].join('\n');
