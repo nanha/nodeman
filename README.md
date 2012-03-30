@@ -14,10 +14,16 @@
 
 - docs 디렉토리안에 <code>moduleName</code>_doc.js 규칙으로 생성되어야 합니다.
 - 파일의 내용은
-        exports.name = '';                                                                                                                                                                                                               
+
+        exports.name = 'moduleName';                                                                                                                                                                                                               
         exports.context = 'use require';                                                                                                                                                                                         
-        exports.homepage = '';                                                                                                                                                                                                   
-        exports.description = [                                                                                                                                                                                                  
-        ].join('\n'); 
+        exports.homepage = 'http://homepage';                                                                                                                                                                                                   
+        exports.description = [
+        "\tblah blah"
+        , "\tblh blah"
+        ].join('\n');
+
+
+  위와 같은 형식으로 작성하시면 됩니다.
 
 
