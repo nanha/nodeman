@@ -9,14 +9,20 @@
 /**
  * Module dependencies.
  */
-var colors = require('colors'), mustache = require('./mustache');
+var colors = require('colors'),
+    mustache = require('./mustache'),
+    fs = require('fs');
 
 /**
  * usage
  */
 var usage = ''
   + '\n'
-  + '  Usage: nodeman [module_name]\n'
+  + '  Usage: nodeman [module_name]\n'.yellow
+  + '\n'
+  + '  Options:\n'
+  + '    -b, --builtin           show module_name list\n'
+  + '    -h, --help              output help information\n'
   ;
 
 /**
@@ -43,9 +49,48 @@ var tpl = [
 /**
  * check module
  */
-var moduleName = process.argv.slice(2).shift();
-if (!moduleName) {
-    abort(usage);
+var args = process.argv.slice(2),
+    moduleName;
+
+while (args.length) {
+    var arg = args.shift();
+    switch (arg) {
+        case '-h':
+        case '--help':
+            abort(usage);
+            break;
+        case '-b':
+        case '--builtin':
+            builtin();
+            break;
+        default:
+            moduleName = arg;
+            help(moduleName);
+            break;
+    }
+}
+
+/**
+ * builtin list
+ *
+ * @return void
+ */
+function builtin() {
+    fs.readdir('./docs', function(err, files) {
+        var __builtin__ = [];
+        files.forEach(function(file) {
+            if (!/_doc/.test(file)) return;
+
+            __builtin__.push(file.replace(/_doc.js/g, ''));
+        });
+
+        console.log('\033[2J');
+        console.log('    Current embed moduleName list'.red);
+        console.log('    --------------------------------');
+        console.log();
+        console.log('    ' + __builtin__.join(', '));
+        console.log();
+    });
 }
 
 /**
@@ -54,7 +99,7 @@ if (!moduleName) {
  * @param {String} id - module name
  * @return void
  */
-(function help(id) {
+function help(id) {
     try {
         var view = require('./docs/' + id + '_doc');
     } catch (e) {
@@ -66,7 +111,7 @@ if (!moduleName) {
     var output = mustache.render(tpl, view);
     console.log(output);
     console.log();
-})(moduleName);
+}
 
 /**
  * console.error && process exit
