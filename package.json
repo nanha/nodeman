@@ -3,19 +3,16 @@
   "name": "nodeman",
   "description": "Executable Node.js User's Colorful Manual for Command-line.",
   "homepage": "http://nodeqa.com",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/nanha/nodeman.git"
   },
-  "bin": {
-    "nodeman": "./index.js"
-  },
+  "bin": { "nodeman": "./bin/nodeman" },
+  "main": "lib/nodeman.js",
   "dependencies": {
     "colors": "*"
   },
-  "devDependencies": {},
-  "optionalDependencies": {},
   "engines": {
     "node": "*"
   }
