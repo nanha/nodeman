@@ -31,3 +31,16 @@
 ![output](https://photos-1.dropbox.com/btj/4faa6d69/wrJ7qPsDFgAg78-vcNjiIR_GcUqX9rJvkD8n7y2Q7ks/ScreenShot003.jpg?size=1280x960)
 
 
+사용방법
+----------
+
+![usage](https://github.com/nanha/nodeman/raw/master/images/nodeman_usage.png)
+
+    $ nodeman -h
+    $ nodeman -b
+    $ nodeman optimist
+    
+    
+
+
+
