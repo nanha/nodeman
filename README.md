@@ -24,6 +24,8 @@
         ].join('\n');
 
 
-  위와 같은 형식으로 작성하시면 됩니다.
+  위와 같은 형식으로 작성하시면 됩니다. \t 탭은 아래에 DESCRIPTION 란에 이쁘게 보여지기 위해서 삽입해야 합니다.
+  
+  <img src="http://i.minus.com/iy6FOo2hT3QeV.jpg">
 
 
