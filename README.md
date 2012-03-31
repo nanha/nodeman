@@ -4,6 +4,12 @@
   리눅스에는 유명한 man 명령어가 있습니다. Node.js 에도 필요하지 않을까? 생각을 하자마자 프로젝트를 진행하기 시작했습니다.
 
 
+설치
+-----
+
+    npm install nodeman -g
+
+
 문서작성 철학
 ---------------
 
@@ -44,5 +50,8 @@
 
 ## repl
 
+    $ node
+    > var man = require('nodeman');
+    > man.help('optimist')
 
 

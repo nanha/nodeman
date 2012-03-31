@@ -15,15 +15,24 @@ var colors = require('colors'),
     fs = require('fs');
 
 /**
+ * console.error && process exit
+ */
+function abort(str) {
+    console.log('\033[2J');
+    console.error(str.toString().red);
+    process.exit(1);
+}
+
+/**
  * usage
  */
 var usage = ''
   + '\n'
   + '  Usage: nodeman [module_name]\n'.yellow
   + '\n'
-  + '  Options:\n'
-  + '    -b, --builtin           show module_name list\n'
-  + '    -h, --help              output help information\n'
+  + '  Options:\n'.cyan
+  + '    -b, --builtin           show module_name list\n'.cyan
+  + '    -h, --help              output help information\n'.cyan
   ;
 
 /**
@@ -45,8 +54,7 @@ while (args.length) {
             break;
         case '-b':
         case '--builtin':
-            nodeman.builtin();
-            return;
+            return nodeman.builtin();
             break;
         default:
             moduleName = arg;
@@ -55,37 +63,4 @@ while (args.length) {
             });
             break;
     }
-}
-
-/**
- * builtin list
- *
- * @return void
- */
-function builtin() {
-    var docs = path.resolve(__dirname, '..', 'docs');
-    fs.readdir(docs, function(err, files) {
-        if (err) throw new Error(err);
-
-        var __builtin__ = [];
-        files.forEach(function(file) {
-            if (!/_doc/.test(file)) return;
-
-            __builtin__.push(file.replace(/_doc.js/g, ''));
-        });
-
-        //console.log('\033[2J');
-        console.log('    Current embed moduleName list'.red);
-        console.log('    --------------------------------');
-        console.log();
-        console.log('    ' + __builtin__.join(', '));
-        console.log();
-    });
-}
-/**
- * console.error && process exit
- */
-function abort(str) {
-    console.error(str);
-    process.exit(1);
 }
