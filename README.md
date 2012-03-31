@@ -40,6 +40,7 @@
 
     $ nodeman -h
     $ nodeman -b
+![builtin](https://github.com/nanha/nodeman/raw/master/images/nodeman_builtin_list.png)
     $ nodeman optimist
     
 
