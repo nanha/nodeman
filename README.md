@@ -15,6 +15,11 @@
 
     npm install nodeman -g
 
+업데이트
+--------
+
+    npm update nodeman -g
+
 
 문서추가 방법
 --------------
