@@ -32,6 +32,7 @@ var usage = ''
   + '\n'
   + '  Options:\n'.cyan
   + '    -b, --builtin           show module_name list\n'.cyan
+  + '    -n, --nodeb             show Node.js Black Edition module_name list\n'.cyan
   + '    -m, --most              search.npmjs.org - Most Depended On List\n'.cyan
   + '    -h, --help              output help information\n'.cyan
   ;
@@ -56,6 +57,10 @@ while (args.length) {
         case '-b':
         case '--builtin':
             return nodeman.builtin();
+            break;
+        case '-n':
+        case '--nodeb':
+            return nodeman.nodebBuiltin();
             break;
         case '-m':
         case '--most':
