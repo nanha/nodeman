@@ -2,7 +2,7 @@
   "author": "nanhapark <http://about.me/nanha>",
   "name": "nodeman",
   "description": "Executable Node.js User's Colorful Manual for Command-line.",
-  "homepage": "http://nodeqa.com",
+  "homepage": "http://nodeman.org",
   "version": "0.3.1",
   "repository": {
     "type": "git",
