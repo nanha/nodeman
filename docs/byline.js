@@ -1,7 +1,7 @@
-exports.name = '';
-exports.category = '';
+exports.name = 'byline';
+exports.category = 'FileSystem';
 exports.context = 'use require';
-exports.homepage = '';
+exports.homepage = 'https://github.com/jahewson/node-byline';
 exports.description = [
  '\t# byline -- buffered Stream for reading lines'.red
 ,'\t'

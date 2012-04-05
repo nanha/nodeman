@@ -1,4 +1,5 @@
 exports.name = 'async';
+exports.category = 'ControlFlow';
 exports.context = 'use require';
 exports.homepage = 'https://github.com/caolan/async';
 exports.description = [
