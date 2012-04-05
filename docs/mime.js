@@ -1,6 +1,7 @@
-exports.name = '';
+exports.name = 'mime';
+exports.category = 'SERVER';
 exports.context = 'use require';
-exports.homepage = '';
+exports.homepage = 'http://startic.kr/njs/package/mime';
 exports.description = [
  '\t# mime'.red
 ,'\t'
