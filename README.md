@@ -3,6 +3,8 @@
 
   node.js 알짜배기 문서를 제공하는데 목적이 있습니다. github의 readme를 긁어와서 바로 보여줄 수 있지만, 내가 사용해보고 중요한 부분을 color module을 사용하여 제공합니다. 문서의 업데이트는 module 중요도에 따라 계속 쭈~욱 된다는것을 약속드립니다.
   
+  [소개 웹페이지](http://nanha.github.com/nodeman/)
+  
   
 동기
 -------
