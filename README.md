@@ -50,7 +50,15 @@
 ### $ nodeman -b
 ![builtin](http://nanha.com/images/nodeb/nodeman_list.png)
 
-### $ nodeman optimist | more
+### $ 문서보기
+
+    # linux
+    nodeman optimist | more
+
+    # bsd
+    # more 사용할 경우 ansi-color를 그대로 표현하기 때문에 -R 옵션을 붙여준다.
+    nodeman optimist | more -R
+
 ![output](http://nanha.com/images/nodeb/nodeman_optimist.png)
 
 ### $ nodeman -m
