@@ -782,4 +782,309 @@ exports.description = [
 ,"\t### response.resume()".magenta
 ,"\t"
 ,"\tResumes a paused response."
+, "\t"
+, "\t"
+, "\t"
+, "\tfrom: http://docs.nodejitsu.com".red.underline.bold
+, "\t================================"
+, "\t"
+, "\tHow to handle multipart form data".red
+, "\t"
+, "\tHandling form data and file uploads properly is an important and complex problem in HTTP servers. Doing it by hand would involve parsing streaming binary data, writing it to the file system, parsing out other form data, and several other complex concerns - luckily, only a very few people will need to worry about it on that deep level. Felix Geisendorfer, one of the Node.js core committers, wrote a library called node-formidable that handles all the hard parts for you. With its friendly API, you can be parsing forms and receiving file uploads in no time."
+, "\t"
+, "\tThis example is taken directly from the node-formidable GitHub page, with some additional explanation added."
+, "\t"
+, "\t  var formidable = require('formidable'),".green
+, "\t      http = require('http'),".green
+, "\t      util = require('util');".green
+, "\t".green
+, "\t  http.createServer(function(req, res) {".green
+, "\t".green
+, "\t    // This if statement is here to catch form submissions, and initiate multipart form data parsing.".green
+, "\t".green
+, "\t    if (req.url == '/upload' && req.method.toLowerCase() == 'post') {".green
+, "\t".green
+, "\t      // Instantiate a new formidable form for processing.".green
+, "\t".green
+, "\t      var form = new formidable.IncomingForm();".green
+, "\t".green
+, "\t      // form.parse analyzes the incoming stream data, picking apart the different fields and files for you.".green
+, "\t".green
+, "\t      form.parse(req, function(err, fields, files) {".green
+, "\t        if (err) {".green
+, "\t".green
+, "\t          // Check for and handle any errors here.".green
+, "\t".green
+, "\t          console.error(err.message);".green
+, "\t          return;".green
+, "\t        }".green
+, "\t        res.writeHead(200, {'content-type': 'text/plain'});".green
+, "\t        res.write('received upload:\n\n');".green
+, "\t".green
+, "\t        // This last line responds to the form submission with a list of the parsed data and files.".green
+, "\t".green
+, "\t        res.end(util.inspect({fields: fields, files: files}));".green
+, "\t      });".green
+, "\t      return;".green
+, "\t    }".green
+, "\t".green
+, "\t    // If this is a regular request, and not a form submission, then send the form.".green
+, "\t".green
+, "\t    res.writeHead(200, {'content-type': 'text/html'});".green
+, "\t    res.end(".green
+, "\t      '<form action=\"/upload\" enctype=\"multipart/form-data\" method=\"post\">'+".green
+, "\t      '<input type=\"text\" name=\"title\"><br>'+".green
+, "\t      '<input type=\"file\" name=\"upload\" multiple=\"multiple\"><br>'+".green
+, "\t      '<input type=\"submit\" value=\"Upload\">'+".green
+, "\t      '</form>'".green
+, "\t    );".green
+, "\t  }).listen(8080);".green
+, "\t"
+, "\tTry it out for yourself - it's definitely the simpler solution, and node-formidable is a battle-hardened, production-ready library. Let userland solve problems like this for you, so that you can get back to writing the rest of your code!"
+, "\t"
+, "\t"
+, "\tHow can I read POST data?".red
+, "\t"
+, "\tby Mr. Nico Reed [github] on Fri Aug 26 2011 03:08:50 GMT-0700 (PST) articlesHTTPservershow-to-read-POST-data"
+, "\tReading the data from a POST request (i.e. a form submission) can be a little bit of a pitfall in Node.js, so we're going to go through an example of how to do it properly. The first step, obviously, is to listen for incoming data - the trick is to wait for the data to finish, so that you can process all the form data without losing anything."
+, "\t"
+, "\tHere is a quick script that shows you how to do exactly that:"
+, "\t"
+, "\tvar http = require('http');".green
+, "\tvar postHTML = ".green
+, "\t  '<html><head><title>Post Example</title></head>' +".green
+, "\t  '<body>' +".green
+, "\t  '<form method=\"post\">' +".green
+, "\t  'Input 1: <input name=\"input1\"><br>' +".green
+, "\t  'Input 2: <input name=\"input2\"><br>' +".green
+, "\t  '<input type=\"submit\">' +".green
+, "\t  '</form>' +".green
+, "\t  '</body></html>';".green
+, "\t".green
+, "\thttp.createServer(function (req, res) {".green
+, "\t  var body = '';".green
+, "\t  req.on('data', function (chunk) {".green
+, "\t    body += chunk;".green
+, "\t  });".green
+, "\t  req.on('end', function () {".green
+, "\t    console.log('POSTed: ' + body);".green
+, "\t    res.writeHead(200);".green
+, "\t    res.end(postHTML);".green
+, "\t  });".green
+, "\t}).listen(8080);".green
+, "\t"
+, "\tThe variable postHTML is a static string containing the HTML for two input boxes and a submit box - this HTML is provided so that you can POST example data. This is NOT the right way to serve static HTML - please see How to Serve Static Files for a more proper example."
+, "\t"
+, "\tWith the HTML out of the way, we create a server to listen for requests. It is important to note, when listening for POST data, that the req object is also an Event Emitter. req, therefore, will emit a data event whenever a 'chunk' of incoming data is received; when there is no more incoming data, the end event is emitted. So, in our case, we listen for data events. Once all the data is recieved, we log the data to the console and send the response."
+, "\t"
+, "\tSomething important to note is that the event listeners are being added immediately after the request object is received. If you don't immediately set them, then there is a possibility of missing some of the events. If, for example, an event listener was attached from inside a callback, then the data and end events might be fired in the meantime with no listeners attached!"
+, "\t"
+, "\tYou can save this script to server.js and run it with node server.js. Once you run it you will notice that occassionally you will see lines with no data, e.g. POSTed:. This happens because regular GET requests go through the same codepath. In a more 'real-world' application, it would be proper practice to check the type of request and handle the different request types differently."
+, "\t"
+, "\t"
+, "\tHow to serve static files".red
+, "\t"
+, "\tA basic necessity for most http servers is to be able to serve static files. Thankfully, it is not that hard to do in Node.js. First you [link]read the file, then you serve the file. Here is an example of a script that will serve the files in the current directory:"
+, "\t"
+, "\tvar fs = require('fs'),".green
+, "\t    http = require('http');".green
+, "\t".green
+, "\thttp.createServer(function (req, res) {".green
+, "\t  fs.readFile(__dirname + req.url, function (err,data) {".green
+, "\t    if (err) {".green
+, "\t      res.writeHead(404);".green
+, "\t      res.end(JSON.stringify(err));".green
+, "\t      return;".green
+, "\t    }".green
+, "\t    res.writeHead(200);".green
+, "\t    res.end(data);".green
+, "\t  });".green
+, "\t}).listen(8080);".green
+, "\t"
+, "\tThis example takes the path requested and it serves that path, relative to the local directory. This works fine as a quick solution; however, there are a few problems with this approach. First, this code does not correctly handle mime types. Additionally, a proper static file server should really be taking advantage of client side caching, and should send a \"Not Modified\" response if nothing has changed. Furthermore, there are security bugs that can enable a malicious user to break out of the current directory. (for example, GET /../../../)."
+, "\t"
+, "\tEach of these can be addressed invidually without much difficulty. You can send the proper mime type header. You can figure how to utilize the client caches. You can take advantage of path.normalize to make sure that requests don't break out of the current directory. But why write all that code when you can just use someone else's library?"
+, "\t"
+, "\tThere is a good static file server called node-static written by Alexis Sellier which you can leverage. Here is a script which functions similarly to the previous one:"
+, "\t"
+, "\tvar static = require('node-static');".green
+, "\tvar http = require('http');".green
+, "\t".green
+, "\tvar file = new(static.Server)();".green
+, "\t".green
+, "\thttp.createServer(function (req, res) {".green
+, "\t  file.serve(req, res);".green
+, "\t}).listen(8080);".green
+, "\t"
+, "\tThis is a fully functional file server that doesn't have any of the bugs previously mentioned. This is just the most basic set up, there are more things you can do if you look at the api. Also since it is an open source project, you can always modify it to your needs (and feel free to contribute back to the project!)."
+, "\t"
+, "\t"
+, "\tHow do I create a HTTP server?".red
+, "\t"
+, "\tMaking a simple HTTP server in Node.js has become the de facto 'hello world' for the platform. On the one hand, Node.js provides extremely easy-to-use HTTP APIs; on the other hand, a simple web server also serves as an excellent demonstration of Node's asynchronous strengths."
+, "\t"
+, "\tLet's take a look at a very simple example:"
+, "\t"
+, "\tvar http = require('http');".green
+, "\tvar requestListener = function (req, res) {".green
+, "\t  res.writeHead(200);".green
+, "\t  res.end('Hello, World!\n');".green
+, "\t}".green
+, "\t".green
+, "\tvar server = http.createServer(requestListener);".green
+, "\tserver.listen(8080);".green
+, "\t"
+, "\tSave this in a file called server.js - run node server.js, and your program will hang there... it's waiting for connections to respond to, so you'll have to give it one if you want to see it do anything. Try opening up a browser, and typing localhost:8080 into the location bar. If everything has been set up correctly, you should see your server saying hello!"
+, "\t"
+, "\tLet's take a more in-depth look at what the above code is doing. First, a function is defined called requestListener that takes a request object and a response object as parameters."
+, "\t"
+, "\tThe request object contains things such as the requested URL, but in this example we ignore it and always return \"Hello World\"."
+, "\t"
+, "\tThe response object is how we send the headers and contents of the response back to the user making the request. Here we return a 200 response code (signaling a successful response) with the body \"Hello World\". Other headers, such as Content-type, would also be set here."
+, "\t"
+, "\tNext, the http.createServer method creates a server that calls requestListener whenever a request comes in. The next line, server.listen(8080), calls the listen method, which causes the server to wait for incoming requests on the specified port - 8080, in this case."
+, "\t"
+, "\tThere you have it - your most basic Node.js HTTP server."
+, "\t"
+, "\t"
+, "\tHow to create an https server?".red
+, "\t"
+, "\tTo create an HTTPS server, you need two things: an SSL certificate, and Node's built-in https module."
+, "\t"
+, "\tWe need to start out with a word about SSL certificates. Speaking generally, there are two kinds of certificates: those signed by a 'Certificate Authority', or CA, and 'self-signed certificates'. A Certificate Authority is a trusted source for an SSL certificate, and using a certificate from a CA allows your users to be trust the identity of your website. In most cases, you would want to use a CA-signed certificate in a production environment - for testing purposes, however, a self-signed certicate will do just fine."
+, "\t"
+, "\tTo generate a self-signed certificate, run the following in your shell:"
+, "\t"
+, "\topenssl genrsa -out key.pem".green
+, "\topenssl req -new -key key.pem -out csr.pem".green
+, "\topenssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem".green
+, "\trm csr.pem".green
+, "\t"
+, "\tThis should leave you with two files, cert.pem (the certificate) and key.pem (the private key). This is all you need for a SSL connection. So now you set up a quick hello world example (the biggest difference between https and http is the options parameter):"
+, "\t"
+, "\tvar https = require('https');".green
+, "\tvar fs = require('fs');".green
+, "\t".green
+, "\tvar options = {".green
+, "\t  key: fs.readFileSync('key.pem'),".green
+, "\t  cert: fs.readFileSync('cert.pem')".green
+, "\t};".green
+, "\t".green
+, "\tvar a = https.createServer(options, function (req, res) {".green
+, "\t  res.writeHead(200);".green
+, "\t  res.end(\"hello world\\n\");".green
+, "\t}).listen(8000);".green
+, "\t"
+, "\tNODE PRO TIP: Note fs.readFileSync - unlike fs.readFile, fs.readFileSync will block the entire process until it completes. In situations like this - loading vital configuration data - the sync functions are okay. In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!"
+, "\t"
+, "\tNow that your server is set up and started, you should be able to get the file with curl:"
+, "\t"
+, "\tcurl -k https://localhost:8000".yellow
+, "\tor in your browser, by going to https://localhost:8000 ."
+, "\t"
+, "\t"
+, "\tHow to access query string parameters".red
+, "\t"
+, "\tIn Node.js, functionality to aid in the accessing of URL query string parameters is built into the standard library. The built-in url.parse method takes care of most of the heavy lifting for us. Here is an example script using this handy function and an explanation on how it works:"
+, "\t"
+, "\tvar fs = require('fs');".green
+, "\tvar http = require('http');".green
+, "\tvar url = require('url') ;".green
+, "\t".green
+, "\thttp.createServer(function (req, res) {".green
+, "\t  var queryObject = url.parse(req.url,true).query;".green
+, "\t  console.log(queryObject);".green
+, "\t".green
+, "\t  res.writeHead(200);".green
+, "\t  res.end('Feel free to add query parameters to the end of the url');".green
+, "\t}).listen(8080);".green
+, "\t"
+, "\tThe key part of this whole script is this line: var queryObject = url.parse(req.url,true).query;. Let's take a look at things from the inside-out. First off, req.url will look like /app.js?foo=bad&baz=foo. This is the part that is in the URL bar of the browser. Next, it gets passed to url.parse which parses out the various elements of the URL (NOTE: the second paramater is a boolean stating whether the method should parse the query string, so we set it to true). Finally, we access the .query property, which returns us a nice, friendly Javascript object with our query string data."
+, "\t"
+, "\t"
+, "\tHow do I make a http request?".red
+, "\t"
+, "\tAnother extremely common programming task is making an HTTP request to a web server. Node.js provides an extremely simple API for this functionality in the form of http.request."
+, "\t"
+, "\tAs an example, we are going to preform a GET request to www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new (which returns a random integer between 1 and 10) and print the result to the console."
+, "\t"
+, "\tvar http = require('http');".green
+, "\t".green
+, "\t//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'".green
+, "\tvar options = {".green
+, "\t  host: 'www.random.org',".green
+, "\t  path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'".green
+, "\t};".green
+, "\t".green
+, "\tcallback = function(response) {".green
+, "\t  var str = '';".green
+, "\t".green
+, "\t  //another chunk of data has been recieved, so append it to `str`".green
+, "\t  response.on('data', function (chunk) {".green
+, "\t    str += chunk;".green
+, "\t  });".green
+, "\t".green
+, "\t  //the whole response has been recieved, so we just print it out here".green
+, "\t  response.on('end', function () {".green
+, "\t    console.log(str);".green
+, "\t  });".green
+, "\t}".green
+, "\t".green
+, "\thttp.request(options, callback).end();".green
+, "\t"
+, "\tMaking a POST request is just as easy. We will make a POST request to www.nodejitsu.com:1337 which is running a server that will echo back what we post. The code for making a POST request is almost identical to making a GET request, just a few simple modifications:"
+, "\t"
+, "\tvar http = require('http');".green
+, "\t".green
+, "\t//The url we want is `www.nodejitsu.com:1337/`".green
+, "\tvar options = {".green
+, "\t  host: 'www.nodejitsu.com',".green
+, "\t  path: '/',".green
+, "\t  //since we are listening on a custom port, we need to specify it by hand".green
+, "\t  port: '1337',".green
+, "\t  //This is what changes the request to a POST request".green
+, "\t  method: 'POST'".green
+, "\t};".green
+, "\t".green
+, "\tcallback = function(response) {".green
+, "\t  var str = ''".green
+, "\t  response.on('data', function (chunk) {".green
+, "\t    str += chunk;".green
+, "\t  });".green
+, "\t".green
+, "\t  response.on('end', function () {".green
+, "\t    console.log(str);".green
+, "\t  });".green
+, "\t}".green
+, "\t".green
+, "\tvar req = http.request(options, callback);".green
+, "\t//This is the data we are posting, it needs to be a string or a buffer".green
+, "\treq.write(\"hello world!\");".green
+, "\treq.end();".green
+, "\t"
+, "\tThrowing in custom headers is just a tiny bit harder. On www.nodejitsu.com:1338 we are running a server that will print out the custom header. So we will just make a quick request to it:"
+, "\t"
+, "\tvar http = require('http');".green
+, "\t".green
+, "\tvar options = {".green
+, "\t  host: 'www.nodejitsu.com',".green
+, "\t  path: '/',".green
+, "\t  port: '1338',".green
+, "\t  //This is the only line that is new. `headers` is an object with the headers to request".green
+, "\t  headers: {'custom': 'Custom Header Demo works'}".green
+, "\t};".green
+, "\t".green
+, "\tcallback = function(response) {".green
+, "\t  var str = ''".green
+, "\t  response.on('data', function (chunk) {".green
+, "\t    str += chunk;".green
+, "\t  });".green
+, "\t".green
+, "\t  response.on('end', function () {".green
+, "\t    console.log(str);".green
+, "\t  });".green
+, "\t}".green
+, "\t".green
+, "\tvar req = http.request(options, callback);".green
+, "\treq.end();".green
 ].join('\n');

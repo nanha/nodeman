@@ -580,4 +580,281 @@ exports.description = [
 , "\t`function (exception) {}`".green
 ,""
 , "\tEmitted when an error occurs."
+,""
+,""
+, "\tfrom: http://docs.nodejitsu.com/articles/file-system/how-to-store-local-config-data".red.underline
+, "\t==================================================================================="
+,""
+, "\tHow to store local configuration data".red
+,""
+, "\tby Charlie McConnell [github] on Fri Aug 26 2011 03:08:50 GMT-0700 (PST) articlesfile-systemhow-to-store-local-config-data"
+, "\tStoring your Node.js application's configuration data is quite simple - every object in JavaScript can be easily rendered as JSON, which in turn is just string data that can be sent or saved any way you'd like. The simplest way to do this involves the built-in JSON.parse() and JSON.stringify() methods."
+,""
+, "\tLet's take a look at a very simple (and contrived) example. First, to save some very simple data:"
+,""
+, "\t  var fs = require('fs');".green
+,"".green
+, "\t  var myOptions = {".green
+, "\t    name: 'Avian',".green
+, "\t    dessert: 'cake'".green
+, "\t    flavor: 'chocolate',".green
+, "\t    beverage: 'coffee'".green
+, "\t  };".green
+,"".green
+, "\t  var data = JSON.stringify(myOptions);".green
+,"".green
+, "\t  fs.writeFile('./config.json', data, function (err) {".green
+, "\t    if (err) {".green
+, "\t      console.log('There has been an error saving your configuration data.');".green
+, "\t      console.log(err.message);".green
+, "\t      return;".green
+, "\t    }".green
+, "\t    console.log('Configuration saved successfully.')".green
+, "\t  });".green
+,""
+, "\tIt's really that simple - just JSON.stringify() and then save it however you'd like."
+,""
+, "\tNow let's load some configuration data:"
+,""
+, "\t  var fs = require('fs');".green
+,"".green
+, "\t  var data = fs.readFileSync('./config.json'),".green
+, "\t      myObj;".green
+,"".green
+, "\t  try {".green
+, "\t    myObj = JSON.parse(data);".green
+, "\t    console.dir(myObj);".green
+, "\t  }".green
+, "\t  catch (err) {".green
+, "\t    console.log('There has been an error parsing your JSON.')".green
+, "\t    console.log(err);".green
+, "\t  }".green
+,""
+, "\tNODE PRO TIP: Even if you don't like using try/catch, this is a place to use it. JSON.parse is a very strict JSON parser, and errors are common - most importantly, though, JSON.parse uses the throw statement rather than giving a callback, so try/catch is the only way to guard against the error."
+,""
+, "\tUsing the built-in JSON methods can take you far, but as with so many other problems you might be looking to solve with Node.js, there is already a solution in Userland that can take you much further. The solution, in this case, is nconf. Written by Charlie Robbins, it's a configuration manager for Node.js, supporting in-memory storage, local file storage, as well as support for a redis backend, provided in a separate module."
+,""
+, "\tLet's take a look now at how we'd perform some local configuration access with nconf. First, you'll need to install it to your project's working directory:"
+,""
+, "\t  npm install nconf".green
+,""
+, "\tAfter that, the syntax is a breeze. Have a look at an example:"
+,""
+, "\t  var nconf = require('nconf');".green
+,"".green
+, "\t  nconf.use('file', { file: './config.json' });".green
+, "\t  nconf.load();".green
+, "\t  nconf.set('name', 'Avian');".green
+, "\t  nconf.set('dessert:name', 'Ice Cream');".green
+, "\t  nconf.set('dessert:flavor', 'chocolate');".green
+,"".green
+, "\t  console.log(nconf.get('dessert'));".green
+,"".green
+, "\t  nconf.save(function (err) {".green
+, "\t    if (err) {".green
+, "\t      console.error(err.message);".green
+, "\t      return;".green
+, "\t    }".green
+, "\t    console.log('Configuration saved successfully.');".green
+, "\t  });".green
+,"".green
+,""
+, "\tThe only tricky thing to notice here is the delimiter - ':'. When accessing nested properties with nconf, a colon is used to delimit the namespaces of key names. If a specific sub-key is not provided, the whole object is set or returned."
+,""
+, "\tWhen using nconf to store your configuration data to a file, nconf.save() and nconf.load() are the only times that any actual file interaction will happen. All other access is performed on an in-memory copy of your data, which will not persist without a call to nconf.save(). Similarly, if you're trying to bring back configuration data from the last time your application ran, it will not exist in memory without a call to nconf.load(), as shown above."
+,""
+,""
+, "\tHow do I search files and directories?".red
+,""
+, "\tby Mr. Nico Reed [github] on Fri Aug 26 2011 03:08:50 GMT-0700 (PST) articlesfile-systemhow-to-search-files-and-directories-in-nodejs"
+, "\tSuppose you want to list all the files in the current directory. One approach is to use the builtin fs.readdir method. This will get you an array of all the files and directories on the specified path:"
+,""
+, "\tfs = require('fs');".green
+,"".green
+, "\tfs.readdir(process.cwd(), function (err, files) {".green
+, "\t  if (err) {".green
+, "\t    console.log(err);".green
+, "\t    return;".green
+, "\t  }".green
+, "\t  console.log(files);".green
+, "\t});".green
+
+, "\tUnfortunately, if you want to do a recursive list of files, then things get much more complicated very quickly. To avoid all of this scary complexity, this is one of the places where a Node.js user-land library can save the day. Node-findit, by SubStack, is a helper module to make searching for files easier. It has interfaces to let you work with callbacks, events, or just plain old synchronously (not a good idea most of the time)."
+,""
+, "\tTo install node-findit, simply use npm:"
+,""
+, "\tnpm install findit".green
+,""
+, "\tIn the same folder, create a file called example.js, and then add this code. Run it with node example.js. This example uses the node-findit event-based interface."
+,""
+, "\t//This sets up the file finder".green
+, "\tvar finder = require('findit').find(__dirname);".green
+,"".green
+, "\t//This listens for directories found".green
+, "\tfinder.on('directory', function (dir) {".green
+, "\t  console.log('Directory: ' + dir + '/');".green
+, "\t});".green
+,"".green
+, "\t//This listens for files found".green
+, "\tfinder.on('file', function (file) {".green
+, "\t  console.log('File: ' + file);".green
+, "\t});".green
+
+, "\tHow do I write files in node.js?".red
+, "\t"
+, "\tby Mr. Nico Reed [github] on Fri Aug 26 2011 03:08:50 GMT-0700 (PST) articlesfile-systemhow-to-write-files-in-nodejs"
+, "\tWriting to a file is another of the basic programming tasks that one usually needs to know about - luckily, this task is very simple in Node.js. We can use the handy writeFile method inside the standard library's fs module, which can save all sorts of time and trouble."
+, "\t"
+, "\tfs = require('fs');".green
+, "\tfs.writeFile(filename, data, [encoding], [callback])".green
+, "\t"
+, "\tfile = (string) filepath of the file to read".blue
+, "\t".blue
+, "\tdata = (string or buffer) the data you want to write to the file".blue
+, "\t".blue
+, "\tencoding = (optional string) the encoding of the data. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding provided, then 'utf8' is assumed.".blue
+, "\t".blue
+, "\tcallback = (optional function (err) {}) If there is no error, err === null, otherwise err contains the error message.".blue
+, "\t"
+, "\tSo if we wanted to write \"Hello World\" to helloworld.txt:"
+, "\t"
+, "\tfs = require('fs');".green
+, "\tfs.writeFile('helloworld.txt', 'Hello World!', function (err) {".green
+, "\t  if (err) return console.log(err);".green
+, "\t  console.log('Hello World > helloworld.txt');".green
+, "\t});".green
+, "\t"
+, "\t[contents of helloworld.txt]:".yellow
+, "\tHello World!".yellow
+, "\t"
+, "\t"
+, "\tIf we purposely want to cause an error, we can try to write to a file that we don't have permission to access:"
+, "\t"
+, "\tfs = require('fs')".green
+, "\tfs.writeFile('/etc/doesntexist', 'abc', function (err,data) {".green
+, "\t  if (err) {".green
+, "\t    return console.log(err);".green
+, "\t  }".green
+, "\t  console.log(data);".green
+, "\t});".green
+, "\t"
+, "\t{ stack: [Getter/Setter],".yellow
+, "\t  arguments: undefined,".yellow
+, "\t  type: undefined,".yellow
+, "\t  message: 'EACCES, Permission denied \'/etc/doesntexist\'',".yellow
+, "\t  errno: 13,".yellow
+, "\t  code: 'EACCES',".yellow
+, "\t  path: '/etc/doesntexist' }".yellow
+
+, "\t"
+, "\tHow do I read files in node.js?".red
+, "\t"
+, "\tby Mr. Nico Reed [github] on Fri Aug 26 2011 03:08:50 GMT-0700 (PST) articlesfile-systemhow-to-read-files-in-nodejs"
+, "\tReading the contents of a file into memory is a very common programming task, and, as with many other things, the Node.js core API provides methods to make this trivial. There are a variety of file system methods, all contained in the fs module. The easiest way to read the entire contents of a file is with fs.readFile, as follows:"
+, "\t"
+, "\tfs = require('fs');".green
+, "\tfs.readFile(file, [encoding], [callback]);".green
+, "\t"
+, "\t// file = (string) filepath of the file to read"
+, "\tencoding is an optional parameter that specifies the type of encoding to read the file. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding is provided, the default is utf8."
+, "\t"
+, "\tcallback is a function to call when the file has been read and the contents are ready - it is passed two arguments, error and data. If there is no error, error will be null and data will contain the file contents; otherwise err contains the error message."
+, "\t"
+, "\tSo if we wanted to read /etc/hosts and print it to stdout (just like UNIX cat):"
+, "\t"
+, "\tfs = require('fs')".green
+, "\tfs.readFile('/etc/hosts', 'utf8', function (err,data) {".green
+, "\t  if (err) {".green
+, "\t    return console.log(err);".green
+, "\t  }".green
+, "\t  console.log(data);".green
+, "\t});".green
+, "\t"
+, "\tThe contents of /etc/hosts should now be visible to you, provided you have permission to read the file in the first place."
+, "\t"
+, "\tLet's now take a look at an example of what happens when you try to read an invalid file - the easiest example is one that doesn't exist."
+, "\t"
+, "\tfs = require('fs');".green
+, "\tfs.readFile('/doesnt/exist', 'utf8', function (err,data) {".green
+, "\t  if (err) {".green
+, "\t    return console.log(err);".green
+, "\t  }".green
+, "\t  console.log(data);".green
+, "\t});".green
+, "\t"
+, "\tThis is the output:"
+, "\t"
+, "\t{ stack: [Getter/Setter],".yellow
+, "\t  arguments: undefined,".yellow
+, "\t  type: undefined,".yellow
+, "\t  message: 'ENOENT, No such file or directory \'/doesnt/exist\'',".yellow
+, "\t  errno: 2,".yellow
+, "\t  code: 'ENOENT',".yellow
+, "\t  path: '/doesnt/exist' }".yellow
+, "\t"
+, "\tThis is a basic Node.js Error object - it can often be useful to log err.stack directly, since this contains a stack trace to the location in code at which the Error object was created."
+, "\t"
+, "\t"
+, "\tHow to use the path module?".red
+, "\t"
+, "\tby Mr. Nico Reed [github] on Fri Aug 26 2011 03:08:50 GMT-0700 (PST) articlesfile-systemhow-to-use-the-path-module"
+, "\tThe path module contains several helper functions to help make path manipulation easier."
+, "\t"
+, "\tThe first function worth mentioning is path.normalize. This function takes a path (in the form of a string) and strips it of duplicate slashes and normalizes directory abbreviations, like '.' for 'this directory' and '..' for 'one level up'. For example:"
+, "\t"
+, "\t    > var path = require('path');".green
+, "\t    > path.normalize('/a/.///b/d/../c/')".green
+, "\t    '/a/b/c/'".green
+, "\t"
+, "\tA closely related function to normalize is join. This function takes a variable number of arguments, joins them together, and normalizes the path."
+, "\t"
+, "\t    > var path = require('path');".green
+, "\t    > path.join('/a/.', './//b/', 'd/../c/')".green
+, "\t    '/a/b/c'".green
+, "\t"
+, "\tA possible use of join is to manipulate paths when serving urls:"
+, "\t"
+, "\t    > var path = require('path');".green
+, "\t    > var url = '/index.html';".green
+, "\t    > path.join(process.cwd(), 'static', url);".green
+, "\t    '/home/nico/static/index.html'".green
+, "\t"
+, "\t"
+, "\tThere are three functions which are used to extract the various parts of the path name: basename, extname, and dirname. "
+, "\t- basename returns the last portion of the path passed in. "
+, "\t- extname returns the extension of the last portion. Generally for directories, extname just returns ''. "
+, "\t- Finally, dirname returns everything that basename does not return."
+, "\t"
+, "\tFor example:"
+, "\t"
+, "\t    > var path = require('path')".green
+, "\t    > var a = '/a/b/c.html'".green
+, "\t    > path.basename(a)".green
+, "\t    'c.html'".green
+, "\t    > path.extname(a)".green
+, "\t    '.html'".green
+, "\t    > path.dirname(a)".green
+, "\t    '/a/b'".green
+, "\t"
+, "\tNote that basename has an optional second parameter that will strip out the extension if you pass the correct extension."
+, "\t"
+, "\t    > var path = require('path')".green
+, "\t    > var a = '/a/b/c.html'".green
+, "\t    > path.basename(a, path.extname(a))".green
+, "\t    'c'".green
+, "\t"
+, "\tLastly, the path module provides methods to check whether or not a given path exists: exists and existsSync They both take the path of a file for the first parameter."
+, "\t"
+, "\texists takes a callback as its second parameter, to which is returned a boolean representing the existance of the file."
+, "\t"
+, "\texistsSync, on the other hand, checks the given path synchronously, returning the boolean directly. In Node.js, you will typically want to use the asynchronous functions for most file system I/O - the synchronous versions will block your entire process until they finish."
+, "\t"
+, "\tBlocking isn't always a bad thing. Checking the existence of a vital configuration file synchronously makes sense, for example - it doesn't matter much if your process is blocking for something it can't run without! Conversely, though, in a busy HTTP server, any per-request file I/O MUST be asynchronous, or else you'll be responding to requests one by one. See the article on asynchronous operations for more details."
+, "\t"
+, "\t    > var path = require('path')".green
+, "\t    > path.exists('/etc', function(exists){console.log(\"Does the file exist?\", exists)})".green
+, "\t    > Does the file exist? true".green
+, "\t".green
+, "\t    > path.existsSync('/etc')".green
+, "\t    true".green
 ].join('\n');
