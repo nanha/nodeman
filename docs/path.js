@@ -9,7 +9,7 @@ exports.description = [
 , "\tpaths.  Almost all these methods perform only string transformations."
 , "\tThe file system is not consulted to check whether paths are valid."
 ,""
-, "\t`fs.exists` and `path.existsSync` are the exceptions, and should"
+, "\t`fs.exists` and `fs.existsSync` are the exceptions, and should"
 , "\tlogically be found in the fs module as they do access the file system."
 ,""
 , "\tUse `require('path')` to use this module.  The following methods are provided:"
@@ -155,7 +155,7 @@ exports.description = [
 , "\t    });".green
 ,""
 ,""
-, "\t### path.existsSync(p)".magenta
+, "\t### fs.existsSync(p)".magenta
 ,""
 , "\tSynchronous version of `fs.exists`."
 ].join('\n');

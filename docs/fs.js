@@ -855,6 +855,6 @@ exports.description = [
 , "\t    > fs.exists('/etc', function(exists){console.log(\"Does the file exist?\", exists)})".green
 , "\t    > Does the file exist? true".green
 , "\t".green
-, "\t    > path.existsSync('/etc')".green
+, "\t    > fs.existsSync('/etc')".green
 , "\t    true".green
 ].join('\n');
