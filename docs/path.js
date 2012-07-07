@@ -9,7 +9,7 @@ exports.description = [
 , "\tpaths.  Almost all these methods perform only string transformations."
 , "\tThe file system is not consulted to check whether paths are valid."
 ,""
-, "\t`path.exists` and `path.existsSync` are the exceptions, and should"
+, "\t`fs.exists` and `fs.existsSync` are the exceptions, and should"
 , "\tlogically be found in the fs module as they do access the file system."
 ,""
 , "\tUse `require('path')` to use this module.  The following methods are provided:"
@@ -145,17 +145,17 @@ exports.description = [
 , "\t    // returns".green
 , "\t    ''".green
 ,""
-, "\t### path.exists(p, [callback])".magenta
+, "\t### fs.exists(p, [callback])".magenta
 ,""
 , "\tTest whether or not the given path exists by checking with the file system."
 , "\tThen call the `callback` argument with either true or false.  Example:"
 ,""
-, "\t    path.exists('/etc/passwd', function (exists) {".green
+, "\t    fs.exists('/etc/passwd', function (exists) {".green
 , "\t      util.debug(exists ? \"it's there\" : \"no passwd!\");".green
 , "\t    });".green
 ,""
 ,""
-, "\t### path.existsSync(p)".magenta
+, "\t### fs.existsSync(p)".magenta
 ,""
-, "\tSynchronous version of `path.exists`."
+, "\tSynchronous version of `fs.exists`."
 ].join('\n');

@@ -11,7 +11,7 @@ exports.description = [
 ,'\t        // results is now an array of stats for each file'.green
 ,'\t    });'.green
 ,'\t'.green
-,'\t    async.filter([\'file1\',\'file2\',\'file3\'], path.exists, function(results){'.green
+,'\t    async.filter([\'file1\',\'file2\',\'file3\'], fs.exists, function(results){'.green
 ,'\t        // results now equals an array of the existing files'.green
 ,'\t    });'.green
 ,'\t'.green
@@ -183,7 +183,7 @@ exports.description = [
 ,'\tReturns a new array of all the values which pass an async truth test.'
 ,'\t_The callback for each iterator call only accepts a single argument of true or'
 ,'\tfalse, it does not accept an error argument first!_ This is in-line with the'
-,'\tway node libraries work with truth tests like path.exists. This operation is'
+,'\tway node libraries work with truth tests like fs.exists. This operation is'
 ,'\tperformed in parallel, but the results array will be in the same order as the'
 ,'\toriginal.'
 ,'\t'
@@ -197,7 +197,7 @@ exports.description = [
 ,'\t'
 ,'\t__Example__'
 ,'\t'
-,'\t    async.filter([\'file1\',\'file2\',\'file3\'], path.exists, function(results){'.green
+,'\t    async.filter([\'file1\',\'file2\',\'file3\'], fs.exists, function(results){'.green
 ,'\t        // results now equals an array of the existing files'.green
 ,'\t    });'.green
 ,'\t'
@@ -295,7 +295,7 @@ exports.description = [
 ,'\t'
 ,'\t__Example__'
 ,'\t'
-,'\t    async.detect([\'file1\',\'file2\',\'file3\'], path.exists, function(result){'.green
+,'\t    async.detect([\'file1\',\'file2\',\'file3\'], fs.exists, function(result){'.green
 ,'\t        // result now equals the first file in the list that exists'.green
 ,'\t    });'.green
 ,'\t'
@@ -345,7 +345,7 @@ exports.description = [
 ,'\tReturns true if at least one element in the array satisfies an async test.'
 ,'\t_The callback for each iterator call only accepts a single argument of true or'
 ,'\tfalse, it does not accept an error argument first!_ This is in-line with the'
-,'\tway node libraries work with truth tests like path.exists. Once any iterator'
+,'\tway node libraries work with truth tests like fs.exists. Once any iterator'
 ,'\tcall returns true, the main callback is immediately called.'
 ,'\t'
 ,'\t__Arguments__'
@@ -359,7 +359,7 @@ exports.description = [
 ,'\t'
 ,'\t__Example__'
 ,'\t'
-,'\t    async.some([\'file1\',\'file2\',\'file3\'], path.exists, function(result){'.green
+,'\t    async.some([\'file1\',\'file2\',\'file3\'], fs.exists, function(result){'.green
 ,'\t        // if result is true then at least one of the files exists'.green
 ,'\t    });'.green
 ,'\t'
@@ -372,7 +372,7 @@ exports.description = [
 ,'\tReturns true if every element in the array satisfies an async test.'
 ,'\t_The callback for each iterator call only accepts a single argument of true or'
 ,'\tfalse, it does not accept an error argument first!_ This is in-line with the'
-,'\tway node libraries work with truth tests like path.exists.'
+,'\tway node libraries work with truth tests like fs.exists.'
 ,'\t'
 ,'\t__Arguments__'
 ,'\t'
@@ -385,7 +385,7 @@ exports.description = [
 ,'\t'
 ,'\t__Example__'
 ,'\t'
-,'\t    async.every([\'file1\',\'file2\',\'file3\'], path.exists, function(result){'.green
+,'\t    async.every([\'file1\',\'file2\',\'file3\'], fs.exists, function(result){'.green
 ,'\t        // if result is true then every file exists'.green
 ,'\t    });'.green
 ,'\t'
