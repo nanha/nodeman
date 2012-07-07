@@ -852,7 +852,7 @@ exports.description = [
 , "\tBlocking isn't always a bad thing. Checking the existence of a vital configuration file synchronously makes sense, for example - it doesn't matter much if your process is blocking for something it can't run without! Conversely, though, in a busy HTTP server, any per-request file I/O MUST be asynchronous, or else you'll be responding to requests one by one. See the article on asynchronous operations for more details."
 , "\t"
 , "\t    > var path = require('path')".green
-, "\t    > path.exists('/etc', function(exists){console.log(\"Does the file exist?\", exists)})".green
+, "\t    > fs.exists('/etc', function(exists){console.log(\"Does the file exist?\", exists)})".green
 , "\t    > Does the file exist? true".green
 , "\t".green
 , "\t    > path.existsSync('/etc')".green
