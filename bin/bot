@@ -1,0 +1,14 @@
+#!/bin/bash
+
+URL=$1
+MODULENAME=$2
+
+#jahewson/node-byline
+PREFIX="https://raw.github.com/"
+SUFFIX="/master/README.md"
+curl -L $PREFIX$URL$SUFFIX -o docs/$MODULENAME.md
+
+cat > docs/$MODULENAME.meta.js << EOF
+exports.name = '$MODULENAME';
+exports.category = '';
+EOF
