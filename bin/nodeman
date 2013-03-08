@@ -1,66 +1,36 @@
-#!/usr/bin/env node
-/**************************************************************
- * Executable Node.js User's Colorful Manual for Command-line.
- *
- * @author nanhpark <http://nodeqa.com>
- * @date 2012-03-30
- *************************************************************/
+#!/bin/bash
+#
+# nodeman
+# node.js command line manual
+# install: npm install nodeman -g
+# author: nanhapark
+# homepage: http://nodeqa.com
+# date: 201303
+#
 
-/**
- * Module dependencies.
- */
-var colors = require('colors'),
-    nodeman = require('../'),
-    path = require('path'),
-    fs = require('fs');
+ROOTPATH=`dirname $0`
+ARG=${1:-FALSE}
+MORE='less -R'
 
-/**
- * console.error && process exit
- */
-function abort(str) {
-    //console.log('\033[2J');
-    console.error(str.toString().red);
-    process.exit(1);
+clear
+
+Usage() {
+  echo
+  echo -e "\x1B[35mUsage: nodeman [module_name]\x1B[00m"
+  echo -e "\x1B[35mOptions:\x1B[00m"
+  echo -e "\x1B[35m    -b, --builtin           show module_name list\x1B[00m"
+  echo -e "\x1B[35m    -h, --help              output help information\x1B[00m"
+  echo
+  exit 1
 }
 
-/**
- * usage
- */
-var usage = ''
-  + '\n'
-  + '  Usage: nodeman [module_name]\n'.yellow
-  + '\n'
-  + '  Options:\n'.cyan
-  + '    -b, --builtin           show module_name list\n'.cyan
-  + '    -h, --help              output help information\n'.cyan
-  ;
-
-/**
- * check module
- */
-var args = process.argv.slice(2),
-    moduleName;
-
-if (!args.length) {
-    abort(usage);
+log() {
+  color=${2:-"35m"}
+  echo -e "\x1B[$color$1\x1B[$color"
 }
 
-while (args.length) {
-    var arg = args.shift();
-    switch (arg) {
-        case '-h':
-        case '--help':
-            abort(usage);
-            break;
-        case '-b':
-        case '--builtin':
-            return nodeman.builtin();
-            break;
-        default:
-            moduleName = arg;
-            nodeman.help(moduleName, function(err) {
-                abort(err);
-            });
-            break;
-    }
-}
+[ $ARG == FALSE ] && Usage && exit 1
+
+$ROOTPATH/_nodeman $ARG | $MORE
+
+exit

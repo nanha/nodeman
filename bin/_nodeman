@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+/**************************************************************
+ * Executable Node.js User's Colorful Manual for Command-line.
+ *
+ * @author nanhpark <http://nodeqa.com>
+ * @date 2012-03-30
+ *************************************************************/
+
+/**
+ * Module dependencies.
+ */
+var colors = require('colors'),
+    nodeman = require('../'),
+    path = require('path'),
+    fs = require('fs');
+
+/**
+ * console.error && process exit
+ */
+function abort(str) {
+    //console.log('\033[2J');
+    console.error(str.toString().red);
+    process.exit(1);
+}
+
+/**
+ * usage
+ */
+var usage = ''
+  + '\n'
+  + '  Usage: nodeman [module_name]\n'.yellow
+  + '\n'
+  + '  Options:\n'.cyan
+  + '    -b, --builtin           show module_name list\n'.cyan
+  + '    -h, --help              output help information\n'.cyan
+  ;
+
+/**
+ * check module
+ */
+var args = process.argv.slice(2),
+    moduleName;
+
+if (!args.length) {
+    abort(usage);
+}
+
+while (args.length) {
+    var arg = args.shift();
+    switch (arg) {
+        case '-h':
+        case '--help':
+            abort(usage);
+            break;
+        case '-b':
+        case '--builtin':
+            return nodeman.builtin();
+            break;
+        default:
+            moduleName = arg;
+            nodeman.help(moduleName, function(err) {
+                abort(err);
+            });
+            break;
+    }
+}
