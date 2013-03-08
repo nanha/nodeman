@@ -4,13 +4,14 @@
 # node.js command line manual
 # install: npm install nodeman -g
 # author: nanhapark
+# twitter: @nanhapark
 # homepage: http://nodeqa.com
-# date: 201303
+# update: 20130301
 #
 
 ROOTPATH=`dirname $0`
 ARG=${1:-FALSE}
-MORE='less -R'
+MORE='less -r'
 
 clear
 
