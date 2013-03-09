@@ -1,3 +1,3 @@
 exports.name = 'wordwrap';
-exports.category = 'manuplate';
+exports.category = 'Manipulate';
 exports.homepage = 'https://github.com/substack/node-wordwrap';

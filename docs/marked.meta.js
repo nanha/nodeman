@@ -1,3 +1,3 @@
 exports.name = 'marked';
-exports.category = 'manuplate';
+exports.category = 'Manipulate';
 exports.homepage = 'https://npmjs.org/browse/depended/marked';

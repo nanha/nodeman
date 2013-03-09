@@ -1,3 +1,3 @@
 exports.name = 'qs';
-exports.category = 'manuplate';
+exports.category = 'Manipulate';
 exports.homepage = 'https://npmjs.org/package/qs';

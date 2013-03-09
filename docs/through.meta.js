@@ -1,3 +1,3 @@
 exports.name = 'through';
-exports.category = 'manuplate';
+exports.category = 'Manipulate';
 exports.homepage = 'https://npmjs.org/package/through';
