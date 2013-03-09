@@ -3,13 +3,14 @@
   "name": "nodeman",
   "description": "Executable Node.js User's Colorful Manual for Command-line.",
   "homepage": "http://manual.nodeman.org",
-  "version": "1.0.0",
+  "version": "1.0.0-2",
   "repository": {
     "type": "git",
     "url": "git://github.com/nanha/nodeman.git"
   },
   "bin": {
-    "nodeman": "./bin/nodeman"
+    "nodeman": "./bin/nodeman",
+    "_nodeman": "./bin/_nodeman"
   },
   "main": "lib/nodeman.js",
   "dependencies": {
