@@ -2,13 +2,15 @@
 
 URL=$1
 MODULENAME=$2
+README=${3:-README.md}
 
 #jahewson/node-byline
 PREFIX="https://raw.github.com/"
-SUFFIX="/master/README.md"
-curl -L $PREFIX$URL$SUFFIX -o docs/$MODULENAME.md
+SUFFIX="/master/$README"
+curl -s -L $PREFIX$URL$SUFFIX -o docs/$MODULENAME.md
 
 cat > docs/$MODULENAME.meta.js << EOF
 exports.name = '$MODULENAME';
 exports.category = '';
+exports.homepage = '';
 EOF
