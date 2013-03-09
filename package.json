@@ -8,7 +8,9 @@
     "type": "git",
     "url": "git://github.com/nanha/nodeman.git"
   },
-  "bin": { "nodeman": "./bin/nodeman" },
+  "bin": {
+    "nodeman": "./bin/nodeman"
+  },
   "main": "lib/nodeman.js",
   "dependencies": {
     "colors": "*",
