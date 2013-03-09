@@ -60,13 +60,14 @@
 
 <h2>문서추가 방법</h2>
 
+<p>docs 디렉토리안에 moduleName.meta.js, modulename.md 규칙으로 생성되어야 합니다.</p>
+
 <ul>
-<li>github에 README에 기재된 모든 내용보다는 필수적인 요소만 추출하고, 중요한 부분은 색상을 입혀서 작업시에 유용하게 참고할 수 있도록 작성해야 합니다.</li>
-<li>docs 디렉토리안에 <code>moduleName</code>.meta.js, modulename.md 규칙으로 생성되어야 합니다.</li>
 <li>
-<p><code>moduleName</code>.meta.js</p>
+<p>moduleName.meta.js</p>
 
 <pre><code>exports.name = 'moduleName';
+exports.category = 'none';
 exports.homepage = 'http://homepage';
 </code></pre>
 </li>
@@ -75,16 +76,10 @@ exports.homepage = 'http://homepage';
 
 <h2>cli</h2>
 
-<h3>$ nodeman -b</h3>
+<pre><code>$ nodeman -h
 
-<p><img src="http://nanha.com/images/nodeb/nodeman_list.png" alt="builtin"></p>
-
-<h3>$ 문서보기</h3>
-
-<pre><code>nodeman optimist
+$ nodeman http
 </code></pre>
-
-<p><img src="http://nanha.com/images/nodeb/nodeman_optimist.png" alt="output"></p>
       </section>
 
     </div>
