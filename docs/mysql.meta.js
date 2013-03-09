@@ -1,3 +1,3 @@
 exports.name = 'mysql';
-exports.category = '';
-exports.homepage = '';
+exports.category = 'database';
+exports.homepage = 'https://github.com/felixge/node-mysql';
