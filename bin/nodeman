@@ -17,10 +17,10 @@ clear
 
 Usage() {
   echo
-  echo -e "\x1B[35mUsage: nodeman [module_name]\x1B[00m"
-  echo -e "\x1B[35mOptions:\x1B[00m"
-  echo -e "\x1B[35m    -b, --builtin           show module_name list\x1B[00m"
-  echo -e "\x1B[35m    -h, --help              output help information\x1B[00m"
+  echo -e "\x1B[1m\x1B[35mUsage: nodeman [module_name]\x1B[00m"
+  echo -e "\x1B[1m\x1B[35mOptions:\x1B[00m"
+  echo -e "\x1B[1m\x1B[35m    -b, --builtin           show module_name list\x1B[00m"
+  echo -e "\x1B[1m\x1B[35m    -h, --help              output help information\x1B[00m"
   echo
   exit 1
 }
