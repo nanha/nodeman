@@ -1,3 +1,3 @@
 exports.name = 'mongoose';
-exports.category = 'dbms';
+exports.category = 'database';
 exports.homepage = 'https://github.com/LearnBoost/mongoose';

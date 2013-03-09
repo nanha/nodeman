@@ -1,3 +1,3 @@
 exports.name = 'redis';
-exports.category = 'cache';
+exports.category = 'server';
 exports.homepage = 'https://github.com/mranney/node_redis';
