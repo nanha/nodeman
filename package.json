@@ -3,7 +3,7 @@
   "name": "nodeman",
   "description": "Executable Node.js User's Colorful Manual for Command-line.",
   "homepage": "http://manual.nodeman.org",
-  "version": "1.0.3",
+  "version": "1.0.3p1",
   "repository": {
     "type": "git",
     "url": "git://github.com/nanha/nodeman.git"
