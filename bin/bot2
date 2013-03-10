@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# auto docs crawler
+#
+# @author nanhapark
+#
+
+IN="
+mishoo/UglifyJS2;uglify-js;README.md
+kriskowal/q;q
+"
+
+for i in $IN
+do
+  read URL MODULENAME README <<<$(IFS=";"; echo $i)
+
+  README=${README:-README.md}
+
+  echo $URL,$MODULENAME,$README
+
+  PREFIX="https://raw.github.com/"
+  SUFFIX="/master/$README"
+  curl -s -L $PREFIX$URL$SUFFIX -o docs/$MODULENAME.md
+
+  cat > docs/$MODULENAME.meta.js << EOF
+exports.name = '$MODULENAME';
+exports.category = '';
+exports.homepage = "https://github.com/$URL";
+EOF
+done
+exit
