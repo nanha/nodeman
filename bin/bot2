@@ -6,8 +6,14 @@
 #
 
 IN="
-mishoo/UglifyJS2;uglify-js;README.md
-kriskowal/q;q
+visionmedia/mocha;mocha;Readme.md
+wycats/handlebars.js;handlebars;README.markdown
+jaredhanson/passport-facebook;passport-facebook
+jaredhanson/passport-twitter;passport-twitter
+jaredhanson/passport-google-oauth;passport-google-oauth
+felixge/node-formidable;formidable;Readme.md
+flatiron/prompt;prompt
+substack/node-findit;findit;README.markdown
 "
 
 for i in $IN
