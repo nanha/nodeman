@@ -6,33 +6,13 @@
 #
 
 IN="
-developmentseed/node-sqlite3;sqlite3
-mikeal/filed;filed
-laverdet/node-fibers;fibers
-bnoordhuis/node-iconv;iconv
-astro/node-expat;node-expat;README.markdown
-nodeca/js-yaml;js-yaml
-vage/node-restify;restify
-nodejitsu/forever;forever
-dominictarr/JSONStream;JSONStream;readme.markdown
-dominictarr/event-stream;event-stream;readme.markdown
-coolaj86/node-bufferjs;bufferjs
-loopj/commonjs-ansi-color;ansi-color
-bnoordhuis/node-buffertools;buffertools
-aconbere/node-file-utils;file
-pkrumins/node-lazy;lazy;readme.txt
-Worlize/WebSocket-Node;websocket
-kissjs/node-mongoskin;mongoskin;Readme.md
-twitter/bower;bower
-assaf/zombie;zombie
-soldair/node-walkdir;walkdir;readme.md
-maritz/node-sprintf;sprintf
-jprichardson/node-fs-extra;fs-extra
-felixge/node-dateformat;dateformat;Readme.md
-brianc/node-postgres;pg
-isaacs/node-tar;tar
-danwrong/Restler;restler
-substack/js-traverse;traverse;readme.markdown
+evilstreak/markdown-js;markdown;README.markdown
+h2non/jsHashes;jshashes
+pumbur/hljs;hljs
+kpdecker/jsdiff;diff
+mashpie/i18n-node;i18n
+andris9/nodemailer;nodemailer
+eleith/emailjs;emailjs;Readme.md
 "
 
 for i in $IN
