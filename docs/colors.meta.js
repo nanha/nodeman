@@ -1,2 +1,3 @@
 exports.name = 'colors';
-exports.category = '';
+exports.category = 'color';
+exports.homepage = 'https://github.com/marak/colors.js';

@@ -6,14 +6,33 @@
 #
 
 IN="
-visionmedia/mocha;mocha;Readme.md
-wycats/handlebars.js;handlebars;README.markdown
-jaredhanson/passport-facebook;passport-facebook
-jaredhanson/passport-twitter;passport-twitter
-jaredhanson/passport-google-oauth;passport-google-oauth
-felixge/node-formidable;formidable;Readme.md
-flatiron/prompt;prompt
-substack/node-findit;findit;README.markdown
+developmentseed/node-sqlite3;sqlite3
+mikeal/filed;filed
+laverdet/node-fibers;fibers
+bnoordhuis/node-iconv;iconv
+astro/node-expat;node-expat;README.markdown
+nodeca/js-yaml;js-yaml
+vage/node-restify;restify
+nodejitsu/forever;forever
+dominictarr/JSONStream;JSONStream;readme.markdown
+dominictarr/event-stream;event-stream;readme.markdown
+coolaj86/node-bufferjs;bufferjs
+loopj/commonjs-ansi-color;ansi-color
+bnoordhuis/node-buffertools;buffertools
+aconbere/node-file-utils;file
+pkrumins/node-lazy;lazy;readme.txt
+Worlize/WebSocket-Node;websocket
+kissjs/node-mongoskin;mongoskin;Readme.md
+twitter/bower;bower
+assaf/zombie;zombie
+soldair/node-walkdir;walkdir;readme.md
+maritz/node-sprintf;sprintf
+jprichardson/node-fs-extra;fs-extra
+felixge/node-dateformat;dateformat;Readme.md
+brianc/node-postgres;pg
+isaacs/node-tar;tar
+danwrong/Restler;restler
+substack/js-traverse;traverse;readme.markdown
 "
 
 for i in $IN

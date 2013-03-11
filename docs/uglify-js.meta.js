@@ -1,3 +1,3 @@
 exports.name = 'uglify-js';
-exports.category = '';
+exports.category = 'cli';
 exports.homepage = "https://github.com/mishoo/UglifyJS2";

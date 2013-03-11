@@ -1,3 +1,3 @@
 exports.name = 'prompt';
-exports.category = '';
+exports.category = 'cli';
 exports.homepage = "https://github.com/flatiron/prompt";
