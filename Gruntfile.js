@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         globals: {
         }
       },
-      files: ['!lib/showdown.js', 'lib/*.js']
+      files: ['lib/*.js', '!lib/showdown.js']
     }
   });
 
