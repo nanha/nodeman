@@ -2,26 +2,22 @@
 
 Traverse and transform objects by visiting every node on a recursive walk.
 
-[![browser support](http://ci.testling.com/substack/js-traverse.png)](http://ci.testling.com/substack/js-traverse)
-
-[![build status](https://secure.travis-ci.org/substack/js-traverse.png)](http://travis-ci.org/substack/js-traverse)
-
 # examples
 
 ## transform negative numbers in-place
 
 negative.js
 
-````javascript
-var traverse = require('traverse');
-var obj = [ 5, 6, -3, [ 7, 8, -2, 1 ], { f : 10, g : -13 } ];
+```javascript
+    var traverse = require('traverse');
+    var obj = [ 5, 6, -3, [ 7, 8, -2, 1 ], { f : 10, g : -13 } ];
 
-traverse(obj).forEach(function (x) {
-    if (x < 0) this.update(x + 128);
-});
+    traverse(obj).forEach(function (x) {
+        if (x < 0) this.update(x + 128);
+    });
 
-console.dir(obj);
-````
+    console.dir(obj);
+```
 
 Output:
 
@@ -32,21 +28,21 @@ Output:
 leaves.js
 
 ````javascript
-var traverse = require('traverse');
+    var traverse = require('traverse');
 
-var obj = {
-    a : [1,2,3],
-    b : 4,
-    c : [5,6],
-    d : { e : [7,8], f : 9 },
-};
+    var obj = {
+        a : [1,2,3],
+        b : 4,
+        c : [5,6],
+        d : { e : [7,8], f : 9 },
+    };
 
-var leaves = traverse(obj).reduce(function (acc, x) {
-    if (this.isLeaf) acc.push(x);
-    return acc;
-}, []);
+    var leaves = traverse(obj).reduce(function (acc, x) {
+        if (this.isLeaf) acc.push(x);
+        return acc;
+    }, []);
 
-console.dir(leaves);
+    console.dir(leaves);
 ````
 
 Output:
@@ -58,15 +54,15 @@ Output:
 scrub.js:
 
 ````javascript
-var traverse = require('traverse');
+    var traverse = require('traverse');
 
-var obj = { a : 1, b : 2, c : [ 3, 4 ] };
-obj.c.push(obj);
+    var obj = { a : 1, b : 2, c : [ 3, 4 ] };
+    obj.c.push(obj);
 
-var scrubbed = traverse(obj).map(function (x) {
-    if (this.circular) this.remove()
-});
-console.dir(scrubbed);
+    var scrubbed = traverse(obj).map(function (x) {
+        if (this.circular) this.remove()
+    });
+    console.dir(scrubbed);
 ````
 
 output:

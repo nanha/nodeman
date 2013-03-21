@@ -6,13 +6,18 @@
 #
 
 IN="
-evilstreak/markdown-js;markdown;README.markdown
-h2non/jsHashes;jshashes
-pumbur/hljs;hljs
-kpdecker/jsdiff;diff
-mashpie/i18n-node;i18n
-andris9/nodemailer;nodemailer
-eleith/emailjs;emailjs;Readme.md
+isaacs/node-semver;semver
+indexzero/node-pkginfo;pkginfo
+ryanmcgrath/wrench-js;wrench;readme.md
+learnboost/stylus;stylus;Readme.md
+cloudhead/vows;vows
+bruce/node-temp;temp
+isaacs/sax-js;sax
+sstephenson/eco;eco
+chriso/cli;cli
+cloudhead/cradle;cradle
+visionmedia/consolidate.js;consolidate;Readme.md
+rsms/node-imagemagick;imagemagick
 "
 
 for i in $IN

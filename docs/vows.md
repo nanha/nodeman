@@ -1,9 +1,9 @@
 Vows
 ====
 
-> Asynchronous BDD & continuous integration for node.js
+Asynchronous BDD & continuous integration for node.js
 
-#### <http://vowsjs.org> #
+http://vowsjs.org
 
 introduction
 ------------
@@ -60,13 +60,5 @@ run tests
 -------------
 
 ```
-  npm test
+    npm test
 ```
-
-authors
--------
-
-Alexis Sellier alexis@cloudhead.io, Charlie Robbins,
-
-*...and many others*
-

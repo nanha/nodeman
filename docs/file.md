@@ -2,13 +2,9 @@
 
 ## Install
 
-<pre>
-  npm install file
-</pre>
+    $ npm install file
 
-<pre>
-  var file = require("file");
-</pre>
+    var file = require("file");
 
 ## API
 

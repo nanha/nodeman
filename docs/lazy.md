@@ -1,17 +1,4 @@
-This is lazy lists for node.js.
-
-It was written by Peteris Krumins (peter@catonmat.net).
-His blog is at http://www.catonmat.net  --  good coders code, great reuse.
-
-------------------------------------------------------------------------------
-
-Table of contents:
-
-  [1]: Introduction
-  [2]: Documentation
-
-
-[1]-Introduction--------------------------------------------------------------
+# Introduction
 
 It comes really handy when you need to treat a stream of events like a list.
 The best use case currently is returning a lazy list from an asynchronous
@@ -138,7 +125,7 @@ Then it .skip's two lines from input and maps a function on all other lines that
 creates a data structure from the output.
 
 
-[2]-Documentation-------------------------------------------------------------
+# Documentation
 
 Supports the following operations:
 
