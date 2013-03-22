@@ -21,7 +21,7 @@
     "grunt-contrib-jshint": "~0.3.0"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt --verbose"
   },
   "engines": {
     "node": "*"
