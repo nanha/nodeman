@@ -10,7 +10,7 @@ module.exports = (grunt)->
         unused: true
         eqnull: true
         browser: !true
-      files: ['lib/*.js', '!lib/mustache.js', '!lib/showdown.js']
+      files: ['lib/nodeman.js']
 
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.registerTask 'default', ['jshint']
