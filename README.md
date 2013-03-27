@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nanha/nodeman.png?branch=master)](https://travis-ci.org/nanha/nodeman)
+
 소개
 ====
 
