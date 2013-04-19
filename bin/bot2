@@ -6,7 +6,7 @@
 #
 
 IN="
-MatthewMueller/cheerio;cheerio;Readme.md
+visionmedia/debug;debug;Readme.md
 "
 
 for i in $IN
