@@ -84,16 +84,30 @@ $ nodeman http
 
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-39155506-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-39155506-1");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
 
+    <!-- Websocket P2M Service http://nodeman.org -->
+    <style>
+      #socket_nodeman_qrcode {
+        position: absolute;
+        top: 100px;
+        right: 0px;
+        z-index: 1000;
+        width: 120px;
+        height: 120px;
+      }
+    </style>
+    <div id="socket_nodeman_qrcode"></div>
+    <script src="http://socket.nodeman.org/p2m.js"></script>
+    <!-- Websocket P2M Service End -->
   </body>
 </html>
