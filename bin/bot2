@@ -6,7 +6,7 @@
 #
 
 IN="
-visionmedia/debug;debug;Readme.md
+isaacs/nopt;nopt
 "
 
 for i in $IN
