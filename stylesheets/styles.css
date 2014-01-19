@@ -561,10 +561,13 @@ h1, h2, h3 {
 
 h1 {
   font-size: 28px;
+  border-bottom: 1px solid #868585;
+  padding: 10px 0;
 }
 
 h2 {
   font-size: 24px;
+  padding: 10px 0;
 }
 
 h4, h5, h6 {
